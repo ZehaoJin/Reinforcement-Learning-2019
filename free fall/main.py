@@ -37,7 +37,7 @@ def train():
 
             a = rl.choose_action(s)
 
-            s_, r, done = env.step(a)
+            s_, r, done, violation = env.step(a)
 
             rl.store_transition(s, a, r, s_)
 
@@ -48,7 +48,7 @@ def train():
 
             s = s_
             if done or j == MAX_EP_STEPS-1:
-                print('Episode: %i | %s | episode_reward: %.1f | step: %i' % (i, '---' if not done else 'done', ep_r, j))
+                print('Episode: %i | %s | episode_reward: %.1f | step: %i' % (i, '---' if not done else 'done', ep_r, j),'E violation: ',violation)
                 break
     rl.save()
 

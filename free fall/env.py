@@ -29,6 +29,9 @@ class ArmEnv(object):
 
     def __init__(self):
         self.man_info = np.array([self.man['x'],self.man['z']],dtype=np.float32)
+        self.int_E=self.m*self.g*self.man['z']/scale
+        self.violation = 0
+        #print(self.int_E)
         #self.t=0.
         #self.S=0.
         #self.done = False
@@ -59,10 +62,19 @@ class ArmEnv(object):
         
         #coords
         x, z = self.man_info
-        ##dx, dz = action/self.dt
+        dx, dz = action/self.dt
         #L and S
-        L = self.m*self.g*self.man['z']-2*self.m*self.g*z
+        #L = self.m*self.g*self.man['z']-2*self.m*self.g*z
+        L = 1/2*self.m*(dx**2+dz**2)-2*self.m*self.g*z
         dS = L*self.dt
+        #Total Energy
+        curr_E=1/2*self.m*(dx**2+dz**2)+self.m*self.g*z
+        #print(self.int_E,curr_E)
+        
+        if curr_E>self.int_E:
+            r-=np.sqrt(curr_E-self.int_E)
+            self.violation+=1
+        
         
         self.S += dS
         self.t += self.dt
@@ -75,16 +87,17 @@ class ArmEnv(object):
 
         # done and reward
         #the if condition tells the localion of the goal! Current map is (x,z)=(50*100) and goal is (25+-10,2+-10)
+        #if z <=(self.goal['z']/scale):
         if (self.goal['z']/scale-10) <= z <=(self.goal['z']/scale+10) and (self.goal['x']/scale-10)<= x <=(self.goal['x']/scale+10):
             self.done = True
-            r = 1/(self.S)*100000
+            r = 1/(self.S)*1000000
 
         # state! current state is (x,z,t,mgz)
         #s = np.concatenate((self.man_info, np.array([self.t],dtype=np.float32), [1. if self.done else 0.]))
         #s = np.concatenate((self.man_info, action, np.array([self.t],dtype=np.float32)))
         s = np.concatenate((self.man_info, np.array([self.t],dtype=np.float32),np.array([self.m*self.g*z])))
         self.man_info*=scale
-        return s, r, self.done
+        return s, r, self.done,self.violation
  
 
     def reset(self):
@@ -93,6 +106,7 @@ class ArmEnv(object):
         self.done=False
         self.t=0.
         self.S=0.
+        self.violation = 0
         self.man_info/=scale
         #s = np.concatenate((self.man_info, np.array([self.t],dtype=np.float32), [1. if self.done else 0.]))
         #s = np.concatenate((self.man_info, np.array([0]),np.array([0]), np.array([self.t],dtype=np.float32)))
