@@ -12,10 +12,13 @@ Feature & reward engineering.
 """
 from env import ArmEnv
 from rl import DDPG
+import numpy as np
 
 MAX_EPISODES = 10000  #number of episodes
 MAX_EP_STEPS = 50    #max step in each episodes
 ON_TRAIN = True
+
+
 
 # set env
 env = ArmEnv()
@@ -36,7 +39,7 @@ def train():
             env.render()
 
             a = rl.choose_action(s)
-
+            print("a", a)
             s_, r, done, violation = env.step(a)
 
             rl.store_transition(s, a, r, s_)
@@ -71,8 +74,3 @@ if ON_TRAIN:
     train()
 else:
     eval()
-
-
-
-
-

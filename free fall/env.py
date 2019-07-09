@@ -18,7 +18,7 @@ The agent "man" starts at (x,z)=25,48, with 0 initial velocity, and reaches near
 
 class ArmEnv(object):
     viewer = None
-    dt = 0.1    
+    dt = 0.1
     action_bound = [-1,1]
     goal = {'x': 250., 'z': 20., 'l': 20.}
     man = {'x': 250., 'z': 480., 'l': 20.} #500*1000 display window
@@ -42,14 +42,14 @@ class ArmEnv(object):
         window_x,window_z=50,100
         self.done = False
         r = 0
-        
+
         #take action
         action = np.clip(action, *self.action_bound)*3  #*3 so the bound is now [-3,3]
-        
+        print("action", action)
         ###print (dx,dz)
         #print(action)
-        
-        
+
+
         self.man_info += action
         if self.man_info[0] <= 0:
             self.man_info[0] = 0
@@ -59,7 +59,7 @@ class ArmEnv(object):
             self.man_info[1] = 0
         if self.man_info[0] >= window_z:
             self.man_info[0] = window_z
-        
+
         #coords
         x, z = self.man_info
         dx, dz = action/self.dt
@@ -70,20 +70,20 @@ class ArmEnv(object):
         #Total Energy
         curr_E=1/2*self.m*(dx**2+dz**2)+self.m*self.g*z
         #print(self.int_E,curr_E)
-        
+
         if curr_E>self.int_E:
             r-=np.sqrt(curr_E-self.int_E)
             self.violation+=1
-        
-        
+
+
         self.S += dS
         self.t += self.dt
         #distance
         #dist=(self.goal['x']-x)**2+(self.goal['z']-z)**2
         #r=-dist
-     
-        
-        
+
+
+
 
         # done and reward
         #the if condition tells the localion of the goal! Current map is (x,z)=(50*100) and goal is (25+-10,2+-10)
@@ -98,7 +98,7 @@ class ArmEnv(object):
         s = np.concatenate((self.man_info, np.array([self.t],dtype=np.float32),np.array([self.m*self.g*z])))
         self.man_info*=scale
         return s, r, self.done,self.violation
- 
+
 
     def reset(self):
         self.man_info[0]=self.man['x']
@@ -146,8 +146,8 @@ class Viewer(pyglet.window.Window):
                      man['x'] + man['l'] / 2, man['z'] + man['l'] / 2,
                      man['x'] + man['l'] / 2, man['z'] - man['l'] / 2]),
             ('c3B', (86, 109, 249) * 4))
-            
-            
+
+
     def render(self):
         self._update_arm()
         self.switch_to()
@@ -163,12 +163,12 @@ class Viewer(pyglet.window.Window):
         x = self.man_info[0]
         z = self.man_info[1]
         l = 20.
-        
+
         self.man.vertices = [x - l/2, z - l/2,
                              x - l/2, z + l/2,
                              x + l/2, z + l/2,
                              x + l/2, z - l/2]
-        
+
 
 
 if __name__ == '__main__':
