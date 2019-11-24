@@ -24,6 +24,8 @@ I learnt the basics of coding in reinforced leanring from Morvan Zhou's Reinforc
 
 - final position = red box
 
+- Theoretical incident point = yellow box, calculated by Snell's Law
+
 - White background indicates index of refraction=1
 
 - Grey background indicates index of refraction=1.3
