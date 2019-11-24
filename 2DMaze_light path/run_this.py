@@ -6,13 +6,7 @@ Created on Thu May 16 06:39:25 2019
 """
 
 """
-Reinforcement learning maze example.
-Red rectangle:          explorer.
-Black rectangles:       hells       [reward = -1].
-Yellow bin circle:      paradise    [reward = +1].
-All other states:       ground      [reward = 0].
-This script is the main part which controls the update method of this example.
-The RL is in RL_brain.py.
+modified from Morvanzhou's tutorial
 View more on my tutorial page: https://morvanzhou.github.io/tutorials/
 """
 
