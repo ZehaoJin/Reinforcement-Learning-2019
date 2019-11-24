@@ -29,14 +29,30 @@ I learnt the basics of coding in reinforced leanring from Morvan Zhou's Reinforc
 - Grey background indicates index of refraction=1.3
 
 
+
 Physics: 
+
 Light travels at different speeds in materials with different index of refraction. Given initial and final position, light travels the path which takes shortest time. This is the reason behind the bending of light beams when light passes through the interface of two materials. The angles of incidence and refraction obeys Snell's Law, so that the "lightpath" will be shortest.
 
+
+
 Environment:
+
 Our agent--light(or a photon) can move freely in a 2-D continous map. i.e. it can move any Delta x and Delta z in x and z direction. Here it is just doing random brownian motion before any neural network training.
 ![](env.gif)
 
+
+
 Reward: 
+
 - Within each episode(one run of training), we calculate the time consumed along the path.
 - Final reward∝-time consumed. Final reward is zero if light does no reach goal position at all.
 - Intermediate reward. We give some intermediate reward if it moves closer to the goal position. This intermediate reward greatly accelerates the training process at early stage. (so that it won't doing all brownian motions for very first few hours)
+
+
+
+Training process:
+
+![](progress1.gif)
+![](progress2.gif)
+![](progress3.gif)
