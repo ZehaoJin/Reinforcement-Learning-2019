@@ -32,20 +32,20 @@ I learnt the basics of coding in reinforced leanring from Morvan Zhou's Reinforc
 
 
 
-####Physics: 
+#### Physics: 
 
 Light travels at different speeds in materials with different index of refraction. Given initial and final position, light travels the path which takes shortest time. This is the reason behind the bending of light beams when light passes through the interface of two materials. The angles of incidence and refraction obeys Snell's Law, so that the "lightpath" will be shortest.
 
 
 
-####Environment:
+#### Environment:
 
 Our agent--light(or a photon) can move freely in a 2-D continous map. i.e. it can move any Delta x and Delta z in x and z direction. Here it is just doing random brownian motion before any neural network training.
 ![](env.gif)
 
 
 
-####Reward: 
+#### Reward: 
 
 - Within each episode(one run of training), we calculate the time consumed along the path.
 - Final reward∝-time consumed. Final reward is zero if light does no reach goal position at all.
@@ -53,7 +53,7 @@ Our agent--light(or a photon) can move freely in a 2-D continous map. i.e. it ca
 
 
 
-####Training process:
+#### Training process:
 
 ![](progress1.gif)
 ![](progress2.gif)
