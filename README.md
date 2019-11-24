@@ -74,3 +74,11 @@ We are here using DDPG, Deep Deterministic Policy Gradient. https://spinningup.o
 - Free fall trajectory (Beta version code available here. Better training algorithms and longer training time should make it work nicely)
 - General relativity geodesics
 - Feynman's Path Integral
+
+
+ ## Light Path--grid with DQN
+ 
+![](lightgrid1.gif)
+- With only a few (~100 train runs) our light finds the best availble route where minimize steps on grey grid and maximize steps on white grid.
+- This is the discountious version of lightpath, and is done before the continous version.
+- We used Deep Q-Network
