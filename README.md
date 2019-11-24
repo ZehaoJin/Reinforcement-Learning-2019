@@ -48,13 +48,26 @@ Our agent--light(or a photon) can move freely in a 2-D continous map. i.e. it ca
 #### Reward: 
 
 - Within each episode(one run of training), we calculate the time consumed along the path.
-- Final reward∝-time consumed. Final reward is zero if light does no reach goal position at all.
+- Final reward∝ - time consumed. 
+- Final reward is zero if light does no reach goal position at all.
 - Intermediate reward. We give some intermediate reward if it moves closer to the goal position. This intermediate reward greatly accelerates the training process at early stage. (so that it won't doing all brownian motions for very first few hours)
 
 
 
-#### Training process:
+#### Training in process:
 
 ![](progress1.gif)
 ![](progress2.gif)
 ![](progress3.gif)
+
+
+#### Flat surface
+ 
+![](flatplane.gif)
+Here we can see that reinforced learning is not performing better on this simplest flat surface than on a more complicated two-material interface. This actually demonstrates the advantage of mechine learning--the complexity of a potential field (here the distribution of index of refraction) does not effect training efficiency and accuracy. With reasonably large number of training episodes, reinforced learning should give a good answer for any complicated fields.
+
+#### Reinforced learning algorithm
+
+We are here using DDPG, Deep Deterministic Policy Gradient. https://spinningup.openai.com/en/latest/algorithms/ddpg.html
+ 
+ 
