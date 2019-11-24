@@ -36,6 +36,7 @@ class DeepQNetwork:
             memory_size=500,
             batch_size=32,
             e_greedy_increment=None,
+            #e_greedy_increment=0.002,
             output_graph=False,
     ):
         self.n_actions = n_actions

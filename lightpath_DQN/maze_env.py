@@ -30,13 +30,13 @@ start_x, start_y = 1,1
 end_x  , end_y   = 6,3
 index_of_refraction1, index_of_refraction2 = 1, 3   #air, water=1,1.33 c/v
 
-'''
+#'''
 MAZE1_W, MAZE1_H = 10,20  #dimension of material 1
 MAZE2_W, MAZE2_H = 10,20  #dimension of material 2
 start_x, start_y = 1,1
 end_x  , end_y   = 20,20
-index_of_refraction1, index_of_refraction2 = 1, 3
-'''
+index_of_refraction1, index_of_refraction2 = 1, 1.33
+#'''
 
 
 
