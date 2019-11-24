@@ -7,7 +7,7 @@ Created on Thu May 16 06:39:25 2019
 
 """
 modified from Morvanzhou's tutorial
-View more on my tutorial page: https://morvanzhou.github.io/tutorials/
+View more on his tutorial page: https://morvanzhou.github.io/tutorials/
 """
 
 from maze_env import Maze
