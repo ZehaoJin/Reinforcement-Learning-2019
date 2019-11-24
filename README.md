@@ -9,3 +9,5 @@ For "Free Fall":
   run main.py to train
   
   run env.py shows the sample environment
+ 
+![](lightpath2mat.gif)
