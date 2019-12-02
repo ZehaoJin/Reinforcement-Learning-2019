@@ -1,21 +1,21 @@
-# Reinforced Learning
-Reinforced learning is about agent, environment, action, and reward: In an "environment"(or, a playfield), the deep learning neural network controls the "action" of an "agent" of our interest so that in the end the agent gets the highest "reward"! 
+# Reinforcement Learning
+Reinforcement learning is about agent, environment, action, and reward: In an "environment"(or, a playfield), the deep learning neural network controls the "action" of an "agent" of our interest so that in the end the agent gets the highest "reward"! 
 Take Mario game as an example, Super Mario himself is the agent, the map of the game is the environment and neural network gets the game controller to control our Mario's actions to achieve best reward--the highest game score.
 
 
-In this project, we want to use reinforced learning along with the Principle of least action to explore fundamental problems in Physics!
+In this project, we want to use reinforcement learning along with the Principle of least action to explore fundamental problems in Physics!
 In physics, Action is the integral of Lagrangian over time. Nature tends to take the path where Action is smallest--principle of least action.
 
-Our idea is simple, use reinforced learning to minimize Action!
+Our idea is simple, use reinforcement learning to minimize Action!
 
 
 
 
 Ideas are from dissusions between Joshua Yao-Yu Lin(https://github.com/joshualin24) and me!
-I learnt the basics of coding in reinforced leanring from Morvan Zhou's Reinforced Learning tutorial https://morvanzhou.github.io. Some code are modified from his examples(Maze and RobotArm).
+I learnt the basics of coding in reinforcement leanring from Morvan Zhou's Reinforcement Learning tutorial https://morvanzhou.github.io. Some code are modified from his examples(Maze and RobotArm).
 
 
- # Light Path--Principle of least action in reinforced learning
+ # Light Path--Principle of least action in reinforcement learning
 ![](lightpathresult.gif)
 
 - Light = blue box
@@ -64,9 +64,9 @@ Our agent--light(or a photon) can move freely in a 2-D continous map. i.e. it ca
 #### Flat surface
  
 ![](flatplane.gif)
-Here we can see that reinforced learning is not performing better on this simplest flat surface than on a more complicated two-material interface. This actually demonstrates the advantage of mechine learning--the complexity of a potential field (here the distribution of index of refraction) does not effect training efficiency and accuracy. With reasonably large number of training episodes, reinforced learning should give a good answer for any complicated fields.
+Here we can see that reinforcement learning is not performing better on this simplest flat surface than on a more complicated two-material interface. This actually demonstrates the advantage of mechine learning--the complexity of a potential field (here the distribution of index of refraction) does not effect training efficiency and accuracy. With reasonably large number of training episodes, reinforcement learning should give a good answer for any complicated fields.
 
-#### Reinforced learning algorithm
+#### Reinforcement learning algorithm
 
 We are here using DDPG, Deep Deterministic Policy Gradient. https://spinningup.openai.com/en/latest/algorithms/ddpg.html
  
