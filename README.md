@@ -72,7 +72,7 @@ We are here using DDPG, Deep Deterministic Policy Gradient. https://spinningup.o
  
 #### Future
 - Free fall trajectory (Beta version code available here. Better training algorithms and longer training time should make it work nicely)
-- **General relativity geodesics--ongoing work:lightpath around a Schwarzschild black hole*
+- **General relativity geodesics--ongoing work: lightpath around a Schwarzschild black hole**
 - Feynman's Path Integral
 
 
