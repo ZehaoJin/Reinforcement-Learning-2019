@@ -4,6 +4,7 @@ Take Mario game as an example, Super Mario himself is the agent, the map of the 
 
 
 In this project, we want to use reinforcement learning along with the Principle of least action to explore fundamental problems in Physics!
+
 In physics, Action is the integral of Lagrangian over time. Nature tends to take the path where Action is smallest--principle of least action.
 
 Our idea is simple, use reinforcement learning to minimize Action!
@@ -12,6 +13,7 @@ Our idea is simple, use reinforcement learning to minimize Action!
 
 
 Ideas are from dissusions between Joshua Yao-Yu Lin(https://github.com/joshualin24) and me!
+
 I learnt the basics of coding in reinforcement leanring from Morvan Zhou's Reinforcement Learning tutorial https://morvanzhou.github.io. Some code are modified from his examples(Maze and RobotArm).
 
 
