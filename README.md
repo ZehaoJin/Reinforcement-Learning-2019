@@ -72,7 +72,7 @@ Here we can see that reinforcement learning is not performing better on this sim
 
 We are here using DDPG, Deep Deterministic Policy Gradient. https://spinningup.openai.com/en/latest/algorithms/ddpg.html
  
-#### Future
+# Future
 - Free fall trajectory (Beta version code available here. Better training algorithms and longer training time should make it work nicely)
 - **General relativity geodesics--ongoing work: lightpath around a Schwarzschild black hole**
 - Feynman's Path Integral
