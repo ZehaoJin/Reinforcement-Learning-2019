@@ -18,21 +18,22 @@ The agent "man" starts at (x,z)=25,48, with 0 initial velocity, and reaches near
 
 class Lightpath(object):
     viewer = None 
-    action_bound = [-100,100]
+    action_bound = [-1,1]
     goal = {'x': 980., 'z': 450., 'l': 20.}
     man = {'x': 20., 'z': 50., 'l': 20.} #1000*500 display window
     state_dim = 7
     action_dim = 2
-    index_of_refraction1,index_of_refraction2=1,3
+    index_of_refraction1,index_of_refraction2=1,1.3
 
     def __init__(self):
         self.man_info = np.array([self.man['x'],self.man['z']],dtype=np.float32)
         self.step_counter=0
         self.done = False
         self.t=0
+        self.best_t=133.8
 
     def step(self, action):
-        
+        ###500,280 as turning point
         self.man_info/=scale
         window_x,window_z=100,50
         self.done = False
@@ -40,14 +41,14 @@ class Lightpath(object):
         
         #take action
         action = np.clip(action, *self.action_bound)*0.5  #*3 so the bound is now [-3,3]
-        action+=0.5*100
+        action+=0.5
         ###print (dx,dz)
-        print(action)
+        #print(action)
         
         
         #self.man_info += action*np.array([100.0,50.0])
-        self.man_info = np.array([50,action[1]*50.0/100.0],dtype=np.float32)
-        print(self.man_info)
+        self.man_info = np.array([50.0,action[1]*50.0],dtype=np.float32)
+        #print(self.man_info)
         '''
         if self.man_info[0] <= 0:
             self.man_info[0] = 0
@@ -82,11 +83,16 @@ class Lightpath(object):
         self.t=dt1+dt2
         self.step_counter+=1
 
-      
+        print('loc:',self.man_info,'  t:',self.t)
         # done and reward
         #the if condition tells the localion of the goal! Current map is (x,z)=(100*50) and goal is (98+-10,25+-10)
         self.done = True
-        r = 1/self.t*50*100*100
+        ###r = 1/(self.t)**2*(50*100*100)**2
+        r = (self.best_t-self.t)*1000*np.abs(self.best_t-self.t)
+        #r = (self.best_t-self.t)*1000
+        
+        if self.t < self.best_t:
+            self.best_t=self.t
         
 
         # state! current state is (x,z,step_counter,dl,dt,t)

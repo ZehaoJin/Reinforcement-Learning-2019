@@ -13,7 +13,7 @@ Feature & reward engineering.
 from env import Lightpath
 from rl import DDPG
 
-MAX_EPISODES = 30000  #number of episodes
+MAX_EPISODES = 300000  #number of episodes
 MAX_EP_STEPS = 100    #max step in each episodes
 ON_TRAIN = True
 
